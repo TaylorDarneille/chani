@@ -26,8 +26,8 @@ module.exports = {
       minute: {
         type: Sequelize.INTEGER
       },
-      location: {
-        type: Sequelize.STRING
+      meridiem: {
+        type: Sequelize.ENUM('am', 'pm')
       },
       createdAt: {
         allowNull: false,

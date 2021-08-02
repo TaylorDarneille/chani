@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
 const PORT = 3000
+const db = require('./models')
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: false }))
 
 // get all friends
 app.get('/friend', (req, res, next) => {
@@ -11,7 +12,20 @@ app.get('/friend', (req, res, next) => {
 
 // create a new friend
 app.post('/friend', (req, res, next)=>{
-    res.json({'msg': 'creating a new friend', body: req.body})
+    let inputYear = parseInt(req.body.year)
+    db.friend.create({
+        name: req.body.name,
+        year: inputYear
+    })
+    .then(newFriend=>{
+        res.json({'msg': 'created a new friend', body: req.body})
+    })
+    .catch(err=>{
+        res.json({
+            'msg': 'Error! Friend not created.',
+            'error': err
+        })
+    })
 })
 
 // edit an existing friend

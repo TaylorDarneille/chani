@@ -42,11 +42,7 @@ module.exports = (sequelize, DataTypes) => {
       min: 0,
       max: 59
     },
-    am: {
-      type: DataTypes.STRING,
-      isIn: [['pm', 'am']]
-    }
-    ,location: DataTypes.STRING
+    meridiem: DataTypes.ENUM('am', 'pm')
   }, {
     sequelize,
     modelName: 'friend',
