@@ -12,13 +12,23 @@ app.get('/friend', (req, res, next) => {
 
 // create a new friend
 app.post('/friend', (req, res, next)=>{
-    let inputYear = parseInt(req.body.year)
-    db.friend.create({
+    let year = req.body.year ? parseInt(req.body.year) : null
+    let month = req.body.month ? parseInt(req.body.month) : null
+    let day = req.body.day ? parseInt(req.body.day) : null
+    let hour = req.body.hour ? parseInt(req.body.hour) : null
+    let minute = req.body.minute ? parseInt(req.body.minute) : null
+    let newFriend = {
         name: req.body.name,
-        year: inputYear
-    })
+        year,
+        month,
+        day,
+        minute,
+        hour,
+        meridiem: req.body.meridiem
+    }
+    db.friend.create(newFriend)
     .then(newFriend=>{
-        res.json({'msg': 'created a new friend', body: req.body})
+        res.json({'msg': 'created a new friend', body: newFriend})
     })
     .catch(err=>{
         res.json({
@@ -30,7 +40,35 @@ app.post('/friend', (req, res, next)=>{
 
 // edit an existing friend
 app.put('/friend/:id', (req, res, next)=>{
-    res.json({'msg': `editting friend #${req.params.id}`})
+    let year = req.body.year ? parseInt(req.body.year) : null
+    let month = req.body.month ? parseInt(req.body.month) : null
+    let day = req.body.day ? parseInt(req.body.day) : null
+    let hour = req.body.hour ? parseInt(req.body.hour) : null
+    let minute = req.body.minute ? parseInt(req.body.minute) : null
+    let updatedFriend = {
+        name: req.body.name,
+        year,
+        month,
+        day,
+        minute,
+        hour,
+        meridiem: req.body.meridiem
+    }
+    db.friend.findByPk(req.params.id)
+    .then(async friendToUpdate=>{
+        friendToUpdate.name = req.body.name
+        friendToUpdate.year = req.body.year ? parseInt(req.body.year) : null
+        friendToUpdate.month = req.body.month ? parseInt(req.body.month) : null
+        friendToUpdate.day = req.body.day ? parseInt(req.body.day) : null
+        friendToUpdate.hour = req.body.hour ? parseInt(req.body.hour) : null
+        friendToUpdate.minute = req.body.minute ? parseInt(req.body.minute) : null
+        friendToUpdate.meridiem = req.body.meridiem
+        await friendToUpdate.save()
+        res.json({
+            'msg': `editted friend #${req.params.id}`,
+            'body': friendToUpdate
+        })
+    })
 })
 
 // permanently delete an existing friend

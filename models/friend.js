@@ -20,27 +20,37 @@ module.exports = (sequelize, DataTypes) => {
     },
     year: {
       type: DataTypes.INTEGER,
-      min: 1900
+      validate: {
+        min: 1900
+      },
     },
     month: {
       type: DataTypes.INTEGER,
-      min: 1,
+      validate: {
+        min: 1,
+      },
       max: 12
     },
     day: {
       type: DataTypes.INTEGER,
-      min: 1,
-      max: 31
+      validate: {
+        min: 1,
+        max: 31
+      },
     },
     hour: {
       type: DataTypes.INTEGER,
-      min: 0,
-      max: 12
+      validate: {
+        min: 0,
+        max: 12
+      },
     },
     minute: {
       type: DataTypes.INTEGER,
-      min: 0,
-      max: 59
+      validate: {
+        min: 0,
+        max: 59
+      },
     },
     meridiem: DataTypes.ENUM('am', 'pm')
   }, {
