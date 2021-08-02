@@ -14,13 +14,39 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   friend.init({
-    name: DataTypes.STRING,
-    year: DataTypes.INTEGER,
-    month: DataTypes.INTEGER,
-    day: DataTypes.INTEGER,
-    hour: DataTypes.INTEGER,
-    minute: DataTypes.INTEGER,
-    location: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    year: {
+      type: DataTypes.INTEGER,
+      min: 1900
+    },
+    month: {
+      type: DataTypes.INTEGER,
+      min: 1,
+      max: 12
+    },
+    day: {
+      type: DataTypes.INTEGER,
+      min: 1,
+      max: 31
+    },
+    hour: {
+      type: DataTypes.INTEGER,
+      min: 0,
+      max: 12
+    },
+    minute: {
+      type: DataTypes.INTEGER,
+      min: 0,
+      max: 59
+    },
+    am: {
+      type: DataTypes.STRING,
+      isIn: [['pm', 'am']]
+    }
+    ,location: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'friend',
