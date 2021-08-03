@@ -6,7 +6,19 @@ app.use(express.urlencoded({ extended: false }))
 
 // get all friends
 app.get('/friend', (req, res, next) => {
-    res.json({'msg': 'retrieving friends list'})
+    db.friend.findAll()
+    .then(foundFriends=>{
+        res.json({
+            'msg': 'retrieved friends list',
+            'body': foundFriends
+        })
+    })
+    .catch(err=>{
+        res.json({
+            'msg': 'Error finding friends!',
+            'error': err
+        })
+    })
 })
 
 // create a new friend
@@ -56,7 +68,7 @@ app.put('/friend/:id', (req, res, next)=>{
     })
     .catch(err=>{
         res.json({
-            'msg': 'Error! Friend not created.',
+            'msg': 'Error! Friend not updated.',
             'error': err
         })
     })
@@ -71,7 +83,7 @@ app.delete('/friend/:id', (req, res, next)=>{
     })
     .catch(err=>{
         res.json({
-            'msg': 'Error! Friend not created.',
+            'msg': 'Error! Friend not deleted.',
             'error': err
         })
     })
