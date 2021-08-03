@@ -29,6 +29,8 @@ I chose to use this deconstructed schema instead of combining the date-related f
 
 ### Endpoints
 
+| Route | Endpoint |
+| ------------- | ------------- |
 | Base | https://chani-app.herokuapp.com |
 | Index  | /friend  |
 | Create  | /friend  |
