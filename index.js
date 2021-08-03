@@ -89,4 +89,18 @@ app.delete('/friend/:id', (req, res, next)=>{
     })
 })
 
-app.listen(process.env.PORT || 3000, ()=>{console.log('app is up and running')})
+app.get('*', (req, res, next) => {
+    res.json({
+        'msg': 'Welcome to the Chani app! This is a JSON CRUD API',
+        'body': [{
+            'index': 'https://chani-app.herokuapp.com/friend',
+            'post':'https://chani-app.herokuapp.com/friend',
+            'edit':'https://chani-app.herokuapp.com/friend/:id',
+            'delete':'https://chani-app.herokuapp.com/friend/:id'
+        }]
+    })
+})
+
+app.listen(process.env.PORT || 3000, ()=>{
+    console.log('Chani app is up and running!')
+})

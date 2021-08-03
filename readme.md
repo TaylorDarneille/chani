@@ -29,6 +29,12 @@ I chose to use this deconstructed schema instead of combining the date-related f
 
 ### Endpoints
 
+| Base | https://chani-app.herokuapp.com |
+| Index  | /friend  |
+| Create  | /friend  |
+| Update  | /friend/:id  |
+| Delete  | /friend/:id  |
+
 
 ### Further Work
 * Sequelize validations aren't working as expected (not throwing errors when given values outside of indicated range)
