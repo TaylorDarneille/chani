@@ -12,9 +12,9 @@ The idea was to create something relevent to an astrology app. This CRUD app has
 
 ### Database Model: friend
 
-| Field  | Data Type | Validation |
-| ------------- | ------------- |
-| Name  | String  | - |
+| Field         | Data Type     | Validation |
+| ------------- | ------------- | ------------- |
+| Name          | String        | - |
 | Year  | Integer  | >=1900 |
 | Month  | Integer  | 1-12 |
 | Day  | Integer  | 1-31 |
