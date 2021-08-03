@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const PORT = 3000
 const db = require('./models')
 
 app.use(express.urlencoded({ extended: false }))
@@ -78,4 +77,4 @@ app.delete('/friend/:id', (req, res, next)=>{
     })
 })
 
-app.listen(PORT, ()=>{console.log('app is up and running')})
+app.listen(process.env.PORT || 3000, ()=>{console.log('app is up and running')})
