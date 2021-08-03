@@ -39,5 +39,4 @@ I chose to use this deconstructed schema instead of combining the date-related f
 
 
 ### Further Work
-* Sequelize validations aren't working as expected (not throwing errors when given values outside of indicated range)
 * Needs more robust error handling and documentation
