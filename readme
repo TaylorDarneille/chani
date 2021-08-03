@@ -1,0 +1,14 @@
+# Chani Full Stack Dev Application
+---
+## CRUD API Example
+
+### Technologies Used:
+* Node (server)
+* PostreSQL (database)
+* Sequelize (ORM)
+
+### Endpoints
+
+### Further Work
+* Sequelize validations aren't working as expected (not throwing errors when given values outside of indicated range)
+* Needs more robust error handling and documentation
