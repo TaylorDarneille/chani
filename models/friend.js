@@ -28,8 +28,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       validate: {
         min: 1,
+        max: 12
       },
-      max: 12
     },
     day: {
       type: DataTypes.INTEGER,
