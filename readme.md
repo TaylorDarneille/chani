@@ -8,7 +8,7 @@
 * Sequelize (ORM)
 
 ### Premise
-The idea was to create something relevent to an astrology app. This CRUD app has a single *friend* model. The idea is that the user would want to store birth information about their friends as they learn it.
+Theoretical astrology (not social) app with a friend model so the user can store birth chart information about people they know.
 
 ### Database Model: friend
 
@@ -24,7 +24,7 @@ The idea was to create something relevent to an astrology app. This CRUD app has
 | Location  | String  | - |
 
 ##### Note
-I chose to use this deconstructed schema instead of combining the date-related fields into a DATE data type field because, from a full-stack development and UX perspective, I can see several possible client-side user flows that would benefit from this structure. Additionally, I have hit some headaches in the past trying to work with the sequelize date-related datatypes since they don't translate directly to the javascript date objects. So, this seemed like a much simpler, and foolproof approach since it is an API that assumes a corresponding front-end user experience.
+I used this deconstructed schema instead of combining the date-related fields into a DATE data type field because, from a full-stack development and UX perspective, there are several possible client-side user flows that would benefit from this structure. Additionally, some headaches can arise when working with the sequelize date-related datatypes since they don't translate directly to the javascript date objects.
 
 
 ### Endpoints
